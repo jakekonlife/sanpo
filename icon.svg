@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke="#173A7A" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+  <defs><pattern id="d" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="2.2" fill="#173A7A" stroke="none" opacity=".18"/></pattern></defs>
+  <rect width="512" height="512" fill="#EFE7D6" stroke="none"/><rect width="512" height="512" fill="url(#d)" stroke="none"/>
+  <!-- 一枚章 -->
+  <g transform="rotate(-10 256 262)">
+    <circle cx="256" cy="262" r="178" fill="#FFFCF3" stroke-width="10"/>
+    <circle cx="256" cy="262" r="150" fill="none" stroke="#E9574D" stroke-width="5" stroke-dasharray="10 12"/>
+  </g>
+  <!-- 行李箱 -->
+  <path d="M210 196v-30q0-14 14-14h64q14 0 14 14v30" fill="none" stroke-width="12"/>
+  <rect x="150" y="196" width="212" height="164" rx="26" fill="#E9B93E" stroke-width="10"/>
+  <path d="M202 196v164M310 196v164" fill="none" stroke-width="16"/>
+  <circle cx="256" cy="278" r="30" fill="#45BCAE" stroke-width="8"/>
+  <path d="M244 278l9 9 16-18" fill="none" stroke="#FFFCF3" stroke-width="8"/>
+  <circle cx="186" cy="372" r="11" fill="#fff" stroke-width="7"/><circle cx="326" cy="372" r="11" fill="#fff" stroke-width="7"/>
+  <!-- 小飞机 -->
+  <g transform="translate(388 138) rotate(-28) scale(2.2)"><path d="M-14 0h22q6 0 6 3t-6 3h-22z" fill="#fff" stroke-width="3"/><path d="M-4 0l-6-12h5l10 12zM-4 6l-6 12h5l10-12zM-14 1l-4-7h4l5 7z" fill="#E9574D" stroke-width="3"/></g>
+  <path d="M96 150q60-70 230-34" fill="none" stroke="#2F6FD0" stroke-width="6" stroke-dasharray="14 14"/>
+</svg>
