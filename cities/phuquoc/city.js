@@ -25,6 +25,9 @@ var CITY = {
   review: {none: '这里没有存 Google 评分。', bad: '吐槽'},
   recap: {size: 92, gap: 18},
   file: 'phuquoc-sanpo',
+  // 岛上没有电车：再远就算叫 Grab＝等车约 8 分钟，每公里约 1.6 分钟；Google 用开车模式
+  hop: {wait: 8, perKm: 1.6, farKm: 999, farPerKm: 1.6, ride: '打车', mode: 'driving'},
+  price: '10K ₫',
   css: '.cab{animation:cab 18s linear infinite}@keyframes cab{from{transform:translate(0,0)}to{transform:translate(275px,75px)}}',
   header: `
 <svg class="scene" viewBox="0 0 390 216" stroke="#173A7A" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">

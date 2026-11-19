@@ -27,6 +27,9 @@ var CITY = {
   review: {none: '街区和线路没有单一的 Google 评分。', bad: '差评'},
   recap: {size: 108, gap: 26},
   file: 'tokyo-sanpo',
+  // 两站之间的路上时间：1.5 km 以内算走路；再远算坐电车＝等车 wait 分钟 + 前 farKm 公里每公里 perKm 分钟 + 之后每公里 farPerKm 分钟
+  hop: {wait: 15, perKm: 2.2, farKm: 10, farPerKm: 1, ride: '坐车', mode: 'transit'},
+  price: '100円',               // 扭蛋机上的价钱牌
   css: '.train{animation:train 16s linear infinite}@keyframes train{from{transform:translateX(-70px)}to{transform:translateX(410px)}}',
   header: `
 <svg class="scene" viewBox="0 0 390 216" stroke="#173A7A" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
