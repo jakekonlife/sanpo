@@ -370,7 +370,8 @@ body:not(.in-trip) nav{display:none}
 .days.strip{grid-template-columns:repeat(7,1fr)}
 .days button.away{opacity:.5}
 .days button i{position:absolute;left:5px;right:5px;bottom:2px;height:4px;border-radius:2px}
-.oldcard{background:var(--white);margin-bottom:16px}
+.oldcard{background:var(--white);margin:20px 0 16px}
+#trips>.card.empty{margin-top:20px}
 </style>
 <style id="cityCss"></style>
 </head>
@@ -1444,8 +1445,8 @@ var OLD=[
 ];
 function readOld(o){try{var s=localStorage.getItem(o.key); return s?JSON.parse(s):null}catch(e){return null}}
 function oldCards(){
-  return OLD.filter(function(o){return !tripById(DB.imported[o.key]) && readOld(o)}).map(function(o){var d=readOld(o), n=Object.keys(d.stamps||{}).length, pl=Object.keys(d.plan||{}).length;
-    return '<div class="card oldcard"><b style="font-family:var(--display);font-weight:400;font-size:18px">发现旧版「'+o.name+'」的记录</b><p class="muted" style="margin:4px 0 10px">'+(n?'盖了 '+n+' 个章':'还没盖章')+(pl?' · 排了 '+pl+' 个地点':'')+'。导入会变成这里的一趟旅行，连同你拍的照片；旧版的资料原样留着。</p><div class="row"><button class="btn mustard" data-act="import" data-v="'+o.key+'">导入成一趟旅行</button></div></div>'}).join('');
+  return OLD.filter(function(o){return !(DB.oldHidden||{})[o.key] && !tripById(DB.imported[o.key]) && readOld(o)}).map(function(o){var d=readOld(o), n=Object.keys(d.stamps||{}).length, pl=Object.keys(d.plan||{}).length;
+    return '<div class="card oldcard"><b style="font-family:var(--display);font-weight:400;font-size:18px">发现旧版「'+o.name+'」的记录</b><p class="muted" style="margin:4px 0 10px">'+(n?'盖了 '+n+' 个章':'还没盖章')+(pl?' · 排了 '+pl+' 个地点':'')+'。导入会变成这里的一趟旅行，连同你拍的照片；旧版的资料原样留着。</p><div class="row"><button class="btn mustard" data-act="import" data-v="'+o.key+'" style="flex:1.6">导入成一趟旅行</button><button class="btn" data-act="oldhide" data-v="'+o.key+'">不用了</button></div></div>'}).join('');
 }
 function openOldDB(name){return new Promise(function(res){ if(!window.indexedDB) return res(null); var r;
   try{r=indexedDB.open(name)}catch(e){return res(null)}
@@ -1637,6 +1638,7 @@ document.addEventListener('click',function(e){
   if(a==='tedit') return openTripEdit(el.dataset.id);
   if(a==='tdel') return delTrip(el.dataset.id);
   if(a==='import') return importOld(v);
+  if(a==='oldhide'){ if(!confirm('不导入这份旧版记录？之后不会再提醒（旧版 app 里的资料不会动）。')) return; DB.oldHidden=DB.oldHidden||{}; DB.oldHidden[v]=1; save(); renderTrips(); toast('好，不会再提醒'); return }
   if(a==='trip') return openTripEdit(TRIP&&TRIP.id);
   if(a==='tecity'){TE.legs[i].city=v; TE.legs[i].zd={}; return tripSheet()}
   if(a==='tedays'){var L=TE.legs[i]; L.days=Math.max(1,Math.min(60,L.days+(+v))); return tripSheet()}
